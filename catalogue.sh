@@ -92,6 +92,7 @@ dnf install -y mongodb-mongosh &>> $LOGFILE
 
 VALIDATE $? "Installing MongoDB client"
 
-mongosh --host $MONGDB_HOST </app/schema/catalogue.js &>> $LOGFILE
+SCHEMA_EXISTS=$(mongosh --host mongodb.daws78s.online --quiet --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+echo "schema: $SCHEMA_EXISTS"
 
 VALIDATE $? "Loading catalouge data into MongoDB"
