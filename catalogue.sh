@@ -95,4 +95,8 @@ VALIDATE $? "Installing MongoDB client"
 SCHEMA_EXISTS=$(mongosh --host mongodb.daws78s.online --quiet --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 echo "schema: $SCHEMA_EXISTS"
 
+if [ $SCHEMA_EXISTS -le 0 ]
+then
+    echo"
+
 VALIDATE $? "Loading catalouge data into MongoDB"
