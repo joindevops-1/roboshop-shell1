@@ -97,6 +97,9 @@ echo "schema: $SCHEMA_EXISTS"
 
 if [ $SCHEMA_EXISTS -le 0 ]
 then
-    echo"
-
-VALIDATE $? "Loading catalouge data into MongoDB"
+    echo "MongoDB schema does not exist"
+    mongosh --host $MONGDB_HOST </app/schema/catalogue.js
+    VALIDATE $? "Loading catalouge data into MongoDB"
+else
+    echo "MongoDB schema already exist"
+fi
